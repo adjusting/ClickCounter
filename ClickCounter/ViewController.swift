@@ -33,22 +33,38 @@ class ViewController: UIViewController {
         self.label2 = label2
 
         
-        
-        
         let button = UIButton()
         button.frame = CGRect.init(x: 150, y: 250, width: 60, height: 60)
-        button.setTitle("Click", for: .normal)
+        button.setTitle("Plus", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         self.view.addSubview(button)
 
         button.addTarget(self, action: #selector(ViewController.incrementCount), for: UIControlEvents.touchUpInside)
+ 
+    
+        let button2 = UIButton()
+        button2.frame = CGRect.init(x: 150, y: 300, width: 60, height: 60)
+        button2.setTitle("Minus", for: .normal)
+        button2.setTitleColor(UIColor.blue, for: .normal)
+        self.view.addSubview(button2)
+        
+        button2.addTarget(self, action: #selector(ViewController.decrementCount), for: UIControlEvents.touchUpInside)
+    }
+
+    func updateLabels(newString:String) {
+        self.label.text = newString
+        self.label2.text = newString
     }
 
     func incrementCount() {
-        self.count = self.count + 1
-        self.label.text = "\(self.count)"
-        self.label2.text = "\(self.count)"
+        self.count += 1
+        updateLabels(newString: "\(self.count)")
    }
+
+    func decrementCount() {
+        self.count -= 1
+        updateLabels(newString: "\(self.count)")
+    }
 
 }
 
