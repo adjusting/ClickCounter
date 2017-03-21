@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.blue, for: .normal)
         self.view.addSubview(button)
 
+        button.addTarget(self, action: #selector(ViewController.incrementCount), for: UIControlEvents.touchUpInside)
     }
 
     func incrementCount() {
