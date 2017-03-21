@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.white
+
         let label = UILabel()
         label.frame = CGRect.init(x: 150, y: 150, width: 60, height: 60)
         label.text = "0"
@@ -49,6 +50,15 @@ class ViewController: UIViewController {
         self.view.addSubview(button2)
         
         button2.addTarget(self, action: #selector(ViewController.decrementCount), for: UIControlEvents.touchUpInside)
+
+        let button3 = UIButton()
+        button3.frame = CGRect.init(x: 150, y: 350, width: 60, height: 60)
+        button3.setTitle("Colour", for: .normal)
+        button3.setTitleColor(UIColor.blue, for: .normal)
+        self.view.addSubview(button3)
+        
+        button3.addTarget(self, action: #selector(ViewController.toggleColour), for: UIControlEvents.touchUpInside)
+        
     }
 
     func updateLabels(newString:String) {
@@ -66,5 +76,13 @@ class ViewController: UIViewController {
         updateLabels(newString: "\(self.count)")
     }
 
+    func toggleColour() {
+        if self.view.backgroundColor == UIColor.white {
+            self.view.backgroundColor = UIColor.lightGray
+        } else {
+            self.view.backgroundColor = UIColor.white
+        }
+        
+    }
 }
 
